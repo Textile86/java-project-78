@@ -31,21 +31,7 @@ jacoco {
 
 checkstyle {
     toolVersion = "10.17.0"
-    config = resources.text.fromString("""
-        <?xml version="1.0"?>
-        <!DOCTYPE module PUBLIC
-                "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-                "https://checkstyle.org/dtds/configuration_1_3.dtd">
-        <module name="Checker">
-            <module name="TreeWalker">
-                <module name="AvoidStarImport"/>
-                <module name="IllegalImport"/>
-                <module name="RedundantImport"/>
-                <module name="UnusedImports"/>
-            </module>
-        </module>
-    """.trimIndent())
-    isIgnoreFailures = false
+    config = resources.text.fromFile("config/checkstyle/checkstyle.xml")
 }
 
 tasks.jacocoTestReport {
