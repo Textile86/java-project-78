@@ -37,7 +37,7 @@ public class ValidatorTest {
         Validator v1 = new Validator();
         NumberSchema schema2 = v1.number();
         assertTrue(schema2.isValid(5));
-        assertTrue(schema2.positive().isValid(null));// true
+        assertTrue(schema2.positive().isValid(null));
         assertTrue(schema2.isValid(null));
         assertTrue(schema2.positive().isValid(null));
 
