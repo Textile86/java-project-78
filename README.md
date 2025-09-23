@@ -5,20 +5,21 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Textile86_java-project-78&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Textile86_java-project-78)
 
-# Data Validator
+# Валидатор данных
 
 Java-библиотека для валидации данных
 
-## Features
+## Возможности
 
 - Валидация строк, чисел, Map
 - Цепочка вызовов
 - Вложенная валидация структур данных
 
-## Usage
+## Использование
 
 ```java
 Validator v = new Validator();
+```
 
 ### Валидация строк
 ```java
@@ -30,6 +31,7 @@ StringSchema schema = v.string()
 schema.isValid("hello world"); // true
 schema.isValid("hi");          // false
 schema.isValid(null);          // false
+```
 
 ### Валидация чисел
 ```java
@@ -41,6 +43,7 @@ NumberSchema schema = v.number()
 schema.isValid(50);   // true
 schema.isValid(0);    // false
 schema.isValid(null); // false
+```
 
 ### Валидация Map с  структурой
 ```java
@@ -55,3 +58,4 @@ MapSchema schema = v.map()
 
 Map<String, Object> person = Map.of("name", "John", "age", 25);
 schema.isValid(person); // true
+```
