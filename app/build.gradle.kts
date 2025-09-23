@@ -21,14 +21,12 @@ sonar {
     properties {
         property("sonar.projectKey", "Textile86_java-project-78")
         property("sonar.organization", "textile86")
-        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
-        property("sonar.junit.reportPaths", "build/test-results/test")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/jacoco/test.xml")
     }
 }
 
 jacoco {
     toolVersion = "0.8.13"
-    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
 }
 
 checkstyle {
@@ -40,6 +38,7 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
     reports {
         xml.required.set(true)
+        xml.outputLocation.set(file("build/jacoco/test.xml"))
         html.required.set(true)
     }
 }
