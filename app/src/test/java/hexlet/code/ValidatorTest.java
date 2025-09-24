@@ -82,7 +82,7 @@ public class ValidatorTest {
         var v4 = new Validator();
         var schema1 = v4.map();
 
-        Map<String, BaseSchema> schemas = new HashMap<>();
+        Map<String, BaseSchema<?>> schemas = new HashMap<>();
         StringSchema nameSchema = v4.string().required();
         StringSchema lastNameSchema = v4.string().required().minLength(2);
         schemas.put("firstName", nameSchema);
@@ -125,7 +125,7 @@ public class ValidatorTest {
 
         NumberSchema ageSchema = v5.number().range(18, 30);
         NumberSchema salarySchema = v5.number().positive();
-        Map<String, BaseSchema> schemas2 = new HashMap<>();
+        Map<String, BaseSchema<?>> schemas2 = new HashMap<>();
         schemas2.put("age", ageSchema);
         schemas2.put("salary", salarySchema);
         schema2.shape(schemas2);

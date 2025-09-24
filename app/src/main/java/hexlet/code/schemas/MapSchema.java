@@ -7,7 +7,7 @@ public class MapSchema extends BaseSchema<Map> {
     private int sizeOf = 0;
     private boolean checkSize = false;
     private boolean shape = false;
-    private Map<String, BaseSchema> schemas = null;
+    private Map<String, BaseSchema<?>> schemas = null;
 
     Predicate<Map> predSizeOf = v -> checkSize ? v.size() == sizeOf : true;
     Predicate<Map> predShape = v -> checkSchema(v);
@@ -36,7 +36,7 @@ public class MapSchema extends BaseSchema<Map> {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema> shapeSchemas) {
+    public MapSchema shape(Map<String, BaseSchema<?>> shapeSchemas) {
         this.shape = true;
         this.schemas = shapeSchemas;
         return this;
