@@ -28,7 +28,8 @@ public abstract class BaseSchema<T> {
     }
 
     /**
-     * return this
+     * comment to pass hexlet tests
+     * @return this
      */
     public BaseSchema<T> required() {
         required = true;
