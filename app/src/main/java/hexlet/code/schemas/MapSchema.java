@@ -36,7 +36,7 @@ public class MapSchema extends BaseSchema<Map> {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema<?>> shapeSchemas) {
+    public MapSchema shape(Map shapeSchemas) {
         this.shape = true;
         this.schemas = shapeSchemas;
         return this;
