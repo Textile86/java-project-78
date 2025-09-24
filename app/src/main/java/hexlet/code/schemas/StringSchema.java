@@ -1,24 +1,19 @@
 package hexlet.code.schemas;
 
+import java.util.function.Predicate;
+
 public class StringSchema extends BaseSchema<String> {
     private  int minLength = 0;
-    private  String contains = null;
+    private  String contains = "";
 
-    @Override
-    public  boolean isValid(String value) {
-        if (!required && (value == null || value.isEmpty())) {
-            return true;
-        }
-        if (required && (value == null || value.isEmpty())) {
-            return false;
-        }
-        if (contains != null && !value.contains(contains)) {
-            return false;
-        }
-        if (minLength > 0 && value.length() < minLength) {
-            return false;
-        }
-        return true;
+    Predicate<String> predMinLength = v -> v.length() >= minLength;
+    Predicate<String> predContains = v -> v.contains(contains);
+    Predicate<String> predIsEmpty = v -> required ? !v.isEmpty() : true;
+
+    public StringSchema() {
+        addCheck("minLength", predMinLength);
+        addCheck("contains", predContains);
+        addCheck("isEmpty", predIsEmpty);
     }
 
     public StringSchema minLength(int min) {
@@ -33,7 +28,7 @@ public class StringSchema extends BaseSchema<String> {
 
     @Override
     public StringSchema required() {
-        this.required = true;
+        super.required();
         return this;
     }
 }

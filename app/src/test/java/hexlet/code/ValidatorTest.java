@@ -51,7 +51,6 @@ public class ValidatorTest {
         assertTrue(schema2.isValid(10));
         assertFalse(schema2.isValid(4));
         assertFalse(schema2.isValid(11));
-
     }
 
     @Test

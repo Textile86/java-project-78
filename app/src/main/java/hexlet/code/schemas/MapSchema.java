@@ -1,6 +1,7 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
+import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema<Map<String, Object>> {
     private int sizeOf = 0;
@@ -8,18 +9,15 @@ public class MapSchema extends BaseSchema<Map<String, Object>> {
     private boolean shape = false;
     private Map<String, BaseSchema> schemas = null;
 
+    Predicate<Map<String, Object>> predSizeOf = v -> checkSize ? v.size() == sizeOf : true;
+    Predicate<Map<String, Object>> predShape = v -> checkSchema(v);
 
-    @Override
-    public boolean isValid(Map<String, Object> value) {
-        if (!required && value == null) {
-            return true;
-        }
-        if (required && value == null) {
-            return false;
-        }
-        if (checkSize && value.size() != sizeOf) {
-            return false;
-        }
+    public MapSchema() {
+        addCheck("sizeOf", predSizeOf);
+        addCheck("shape", predShape);
+    }
+
+    public boolean checkSchema(Map<String, Object> value) {
         if (shape) {
             for (String key : schemas.keySet()) {
                 BaseSchema schema = schemas.get(key);
@@ -41,5 +39,11 @@ public class MapSchema extends BaseSchema<Map<String, Object>> {
     public void shape(Map<String, BaseSchema> shapeSchemas) {
         this.shape = true;
         this.schemas = shapeSchemas;
+    }
+
+    @Override
+    public MapSchema required() {
+        super.required();
+        return this;
     }
 }
