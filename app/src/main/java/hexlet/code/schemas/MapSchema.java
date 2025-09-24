@@ -3,14 +3,14 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class MapSchema extends BaseSchema<Map> {
+public final class MapSchema extends BaseSchema<Map> {
     private int sizeOf = 0;
     private boolean checkSize = false;
     private boolean shape = false;
     private Map<String, BaseSchema<?>> schemas = null;
 
-    Predicate<Map> predSizeOf = v -> checkSize ? v.size() == sizeOf : true;
-    Predicate<Map> predShape = v -> checkSchema(v);
+    private Predicate<Map> predSizeOf = v -> checkSize ? v.size() == sizeOf : true;
+    private Predicate<Map> predShape = v -> checkSchema(v);
 
     public MapSchema() {
         addCheck("sizeOf", predSizeOf);
