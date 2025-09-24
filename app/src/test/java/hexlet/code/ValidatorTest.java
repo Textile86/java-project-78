@@ -68,12 +68,12 @@ public class ValidatorTest {
         data.put("key1", "value1");
         assertTrue(schema3.isValid(data));
 
-        schema3.sizeOf(2);
+        schema3.sizeof(2);
         assertFalse(schema3.isValid(data));
 
         data.put("key2", "value2");
         assertTrue(schema3.isValid(data));
-        assertTrue(schema3.sizeOf(10).sizeOf(2).isValid(data));
+        assertTrue(schema3.sizeof(10).sizeof(2).isValid(data));
 
     }
 

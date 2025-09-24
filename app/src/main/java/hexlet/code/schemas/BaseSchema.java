@@ -27,7 +27,7 @@ public abstract class BaseSchema<T> {
         return true;
     }
 
-    public BaseSchema required() {
+    public BaseSchema<T> required() {
         required = true;
         return this;
     }
