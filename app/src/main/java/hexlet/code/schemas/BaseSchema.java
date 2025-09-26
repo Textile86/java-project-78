@@ -36,3 +36,4 @@ public abstract class BaseSchema<T> {
         return this;
     }
 }
+
